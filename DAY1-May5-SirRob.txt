@@ -133,9 +133,9 @@ vlan 10
 vlan 50
    name IPCameraVLAN
 vlan 69
-   name vlanNIrobert
+   name vlanNETFLIX
 vlan 70
-    name EXTRAVLAN
+    name GIPITPERA
 vlan 71
     name HRD-POLICY
 vlan 100
@@ -172,10 +172,10 @@ config t
 ip routing
 ip dhcp pool CAMERA6
 host 10.42.50.6 255.255.255.0
-client-identifier 001a.xxxx.yyyy
+client-identifier 001a.0709.c232
 ip dhcp pool CAMERA8
 host 10.42.50.8 255.255.255.0
-client-identifier 001a.xxxx.yyyy 
+client-identifier 64f6.9dde.953b 
 end
 show ip dhcp binding
 
@@ -246,18 +246,18 @@ ephone-dn 7
 ephone-dn 8
   number 4288
  ephone-dn 9
-   number 4299
+   number 4267
 ephone-dn 10
- number 4298
+ number 4223
 Ephone 1
-  Mac-address cafe.face.baba
+  Mac-address ccd8.c1fb.0f11
   type 8945
-  button 1:8 2:7 3:6 4:5
+  button 1:8 2:7 3:6 4:9
   restart
 Ephone 2
-  Mac-address fafa.caca.baba
+  Mac-address 204c.9e6c.8743
   type 8945
-  button 1:4 2:3 3:2 4:1
+  button 1:4 2:3 3:2 4:10
   restart  
 end
 
@@ -288,10 +288,10 @@ configure terminal
  destination-pattern 11..
  session target ipv4:10.11.100.8
  codec g711ULAW
-  !dial-peer voice 12 Voip
-  !destination-pattern 12..
-  !session target ipv4:10.12.100.8
-  !codec g711ULAW
+  dial-peer voice 12 Voip
+  destination-pattern 12..
+  session target ipv4:10.12.100.8
+  codec g711ULAW
 dial-peer voice 21 Voip
  destination-pattern 21..
  session target ipv4:10.21.100.8
@@ -312,10 +312,10 @@ dial-peer voice 41 Voip
  destination-pattern 41..
  session target ipv4:10.41.100.8
  codec g711ULAW
-dial-peer voice 42 Voip
- destination-pattern 42..
- session target ipv4:10.42.100.8
- codec g711ULAW
+!dial-peer voice 42 Voip
+ !destination-pattern 42..
+ !session target ipv4:10.42.100.8
+ !codec g711ULAW
 dial-peer voice 51 Voip
  destination-pattern 51..
  session target ipv4:10.51.100.8
@@ -490,43 +490,7 @@ route  add  200.0.0.0   mask  255.255.255.0   10.42.1.4
  
 @@@@@@@@@IVRS: interActive Voice Response System: maticSagot
 
-config t
-dial-peer voice 69 voip
- service rivanaa out-bound
- destination-pattern 4269
- session target ipv4:10.42.100.8
- incoming called-number 4269
- dtmf-relay h245-alphanumeric
- codec g711ulaw
- no vad
-!
-telephony-service
- moh "flash:/en_bacd_music_on_hold.au"
-!
-application
- service rivanaa flash:app-b-acd-aa-3.0.0.2.tcl
-  paramspace english index 1        
-  param number-of-hunt-grps 2
-  param dial-by-extension-option 8
-  param handoff-string rivanaa
-  param welcome-prompt flash:en_bacd_welcome.au
-  paramspace english language en
-  param call-retry-timer 15
-  param service-name rivanqueue
-  paramspace english location flash:
-  param second-greeting-time 60
-  param max-time-vm-retry 2
-  param voice-mail 1234
-  param max-time-call-retry 700
-  param aa-pilot 4269
- service rivanqueue flash:app-b-acd-3.0.0.2.tcl
-  param queue-len 15
-  param aa-hunt1 4200
-  param aa-hunt2 4277
-  param aa-hunt3 4201
-  param aa-hunt4 4233
-  param queue-manager-debugs 1
-  param number-of-hunt-grps 4
+8.
 ****************************************************************************
 HOW TO FIX THE SHYT
 config t
